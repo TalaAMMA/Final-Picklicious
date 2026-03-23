@@ -1,0 +1,86 @@
+@use "./mixins" as mxn;
+
+@media (min-width: 321px) and (max-width: 1024px) {
+  .goals {
+    @include mxn.flexcolumn;
+  }
+}
+@media (min-width: 321px) and (max-width: 1024px) {
+  .mv {
+    & > .back {
+      display: block;
+    }
+    & > .front {
+      display: none;
+    }
+  }
+}
+@media (max-width: 320px) {
+  .goals {
+    @include mxn.flexcolumn;
+  }
+}
+@media (max-width: 320px) {
+  .mv {
+    & > .back {
+      display: block;
+    }
+    & > .front {
+      display: none;
+    }
+  }
+}
+@media (min-width: 321px) and (max-width: 768px) {
+  .videoAbout {
+    max-height: 300px;
+    min-width: 250px;
+  }
+}
+@media (max-width: 320px) {
+  .videoAbout {
+    max-height: 250px;
+    min-width: 140px;
+  }
+}
+@media (min-width: 321px) and (max-width: 768px) {
+    .about_main {
+      min-height: 200px;
+    }
+  }
+  @media (min-width: 321px) and (max-width: 768px) {
+    .about_main > p {
+      padding: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #000000;
+      font-family: "Signika Negative", sans-serif;
+      text-align: justify;
+      padding-left: 10px;
+      letter-spacing: 1px;
+      min-width: 100%;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .about_main > p {
+      padding: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #000000;
+      font-family: "Signika Negative", sans-serif;
+      text-align: justify;
+      padding-left: 10px;
+      letter-spacing: 1px;
+      min-width: 100%;
+    }
+  }
+  @media (max-width: 320px) {
+    .containerButtons
+    {@include mxn.flexcolumn;
+      & > h2 {
+        font-size: 2rem;
+        font-family: "Signika Negative", sans-serif;
+        font-style: italic;
+        color: #834444;
+      }
+    }}  

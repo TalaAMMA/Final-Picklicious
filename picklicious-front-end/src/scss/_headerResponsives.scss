@@ -1,0 +1,96 @@
+@use "./mixins" as mxn;
+
+.cartIndex {
+  @media (min-width: 321px) and (max-width: 768px) {
+    display: none;
+  }
+  @media (max-width: 320px) {
+    display: none;
+  }
+}
+@media (min-width: 321px) and (max-width: 768px) {
+    .container-search {
+    display: none;
+  }
+}
+  @media (max-width: 320px) {
+    .container-search {
+    display: none;}
+  }
+  @media (max-width: 768px) {
+    .third-header {
+    display: none;
+  }
+}
+@media (min-width: 321px) and (max-width: 768px) {
+    .basket {
+    display: none;
+  }
+}
+  @media (max-width: 321px) {
+    .basket {
+    display: none;
+  }
+}
+@media (min-width: 321px) and (max-width: 768px) {
+    .productBasket{
+      display: block;
+    }
+    
+  }
+  @media (max-width: 321px) {
+    .productBasket{
+    display: block;
+  }
+}
+@media (min-width: 321px) and (max-width: 768px) {
+    .hamburgerIcon {
+      padding-right: 50px;
+      display: block;
+      max-width: 25px;
+      max-height: 25px;
+    }
+  }
+  @media (max-width: 321px) {
+    .hamburgerIcon {
+      padding-right: 50px;
+      display: block;
+      max-width: 25px;
+      max-height: 25px;
+    }
+  }
+  @media (max-width: 320px) {
+    .hiddenList{
+      @include mxn.flexcolumn;
+    }
+  
+  }
+  @media (min-width: 321px) and (max-width: 768px) {
+    .containerHamburger {
+      gap: 20px;
+      @include mxn.flexrow;
+      align-items: center;
+      justify-content: flex-end;
+      min-height: 150px;
+
+    }
+   
+  }
+  @media (max-width: 320px) {
+    .containerHamburger {
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 150px;
+  }
+}
+.removedText {
+    @media (min-width: 321px) and (max-width: 768px) {
+      display: none;
+    }
+    @media (max-width: 320px) {
+      display: none;
+    }
+  }

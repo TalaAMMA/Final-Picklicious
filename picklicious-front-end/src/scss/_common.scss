@@ -1,0 +1,22 @@
+@use "./mixins" as mxn;
+
+html {
+  min-height: 100%;
+  @include mxn.flexcolumn;
+}
+
+main {
+  gap: 20px;
+
+  align-items: center;
+}
+
+.main_container {
+  overflow: auto;
+  flex: 1;
+  gap: 30px;
+}
+.Imgs {
+  max-width: 220px;
+  max-height: 220px;
+}

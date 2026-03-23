@@ -1,0 +1,107 @@
+@use "../../scss/mixins" as mxn;
+
+.categories {
+  width: 100%;
+  gap: 20px;
+  max-width: 1000px;
+
+  @include mxn.flexcolumn;
+
+}
+
+.products {
+  flex: 1 0;
+}
+.products > img {
+  min-width: 50%;
+  min-height: 100%;
+
+}
+
+.row {
+  @include mxn.flexrow;
+  max-height: 300px;
+  min-width: 100%;
+  gap: 20px;
+
+}
+
+.hover-paragraph {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  gap: 8px;
+  bottom: 0;
+  z-index: 2;
+  opacity: 0;
+  position: absolute;
+  transition: 0.8s all;
+  background: rgba(54, 54, 54, 0.9);
+  & > p {
+    display: flex;
+    align-items: center;
+    font-size: large;
+    font-weight: lighter;
+    padding: 16px;
+    letter-spacing: normal;
+  }
+ 
+}
+
+.hover-paragraph:hover {
+  opacity: 1;
+}
+.goButton {
+  box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	background:linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
+	background-color:#ffc477;
+	border-radius:6px;
+	border:1px solid #eeb44f;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #cc9f52;
+  
+}
+.goButton:hover {
+  background:linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
+	background-color:#fb9e25;
+}
+.goButton:active {
+  position:relative;
+	top:1px;
+}
+.smallContainerAbout {
+  display: none;
+  gap: 10px;
+  position: relative;
+  padding-left: 20px;
+  & > a {
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: solid 2px green;
+  }
+  & > p {
+    padding-left: 45px;
+  }
+  & > p:before {
+    content: "";
+
+    background-image: url(../images/cuillere.jpg);
+    min-width: 35px;
+    min-height: 35px;
+    position: absolute;
+    left: 5px;
+  }
+
+ 
+}

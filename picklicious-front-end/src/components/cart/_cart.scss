@@ -1,0 +1,122 @@
+@use "../../scss/mixins" as mxn;
+
+.containerCart {
+  @include mxn.flexcolumn;
+  padding: 20px;
+  gap: 20px;
+  & > ul {
+    gap: 20px;
+    display: flex;
+    @include mxn.flexcolumn;
+  }
+  & > ul > li {
+    gap: 5px;
+    display: flex;
+    justify-content: space-between;
+    @include mxn.flexrow;
+  }
+  & > p {
+    font-size: 2rem;
+    color: #474446;
+  }
+}
+
+//Cart Content//////
+.closeBtn {
+  min-width: 30px;
+  max-height: 30px;
+  align-self: flex-end;
+}
+.addBtn {
+  max-height: 20px;
+  max-width: 20px;
+ 
+}
+
+.removeBtn {
+  max-height: 20px;
+  max-width: 20px;
+  font-weight: bold;
+ 
+}
+.quantity {
+  @include mxn.flexrow;
+  gap: 5px;
+}
+.updateQty {
+  display: flex;
+  justify-content: space-between;
+  @include mxn.flexrow;
+  gap: 20px;
+
+}
+.productImg {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 5px;
+}
+.total {
+  display: flex;
+  align-items: flex-end;
+}
+.quantity {
+  @include mxn.buttonsDesign;
+}
+.buttonsCart {
+  @include mxn.flexrow;
+  justify-content: space-between;
+}
+
+.maxQuantity {
+  color: red;
+}
+.productDetails {
+  align-items: center;
+  & > p {
+    max-width: 185px;
+    font-size: 2rem;
+    color: #474446;
+    align-items: center;
+  }
+  
+}
+
+// Check Button to //
+.popUp {
+  display: flex;
+  position: fixed;
+  top: 7%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  animation: popUp 4s cubic-bezier(0.11, 0, 0.5, 0) 0s 1 normal forwards;
+}
+@keyframes popUp {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+.confirmAddedProduct {
+  max-width: 40px;
+  min-height: 40px;
+}
+//CehckOut
+.checkOut {
+  @include mxn.buttonsDesign;
+  align-items: flex-end;
+  justify-content: flex-end;
+  display: flex;
+  font-size: 1.8rem;
+  color: #474446;
+}
+.emptyCartMessage {
+  align-items: center;
+  font-weight: 800;
+
+}

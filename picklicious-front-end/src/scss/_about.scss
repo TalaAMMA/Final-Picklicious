@@ -1,0 +1,143 @@
+@use "./mixins" as mxn;
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300&display=swap");
+
+body {
+  overflow: auto;
+}
+.main_container_about {
+  overflow: auto;
+}
+
+.container-header {
+  padding-right: 20px;
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.about_main {
+  background-image: url(../images/selbackground.jpg);
+  min-height: 400px;
+  background-size: cover;
+  & > p {
+    max-width: 60%;
+    font-weight: bold;
+    color: #834444;
+    padding-left: 80px;
+    padding-top: 75px;
+    font-family: "Signika Negative", sans-serif;
+    letter-spacing: 1px;
+    text-align: justify;
+  }
+}
+
+.opacity {
+  opacity: 0.3;
+}
+
+.goals {
+  @include mxn.flexrow;
+
+  max-width: 1200px;
+  min-height: 350px;
+  gap: 20px;
+}
+
+.mv {
+  background-image: var(--lightpinkBG);
+  min-width: 25%;
+  align-items: center;
+  padding: 20px;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.mvs > span > img {
+  width: 150px;
+  height: 150px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  display: block;
+  box-sizing: border-box;
+}
+.mvTitle {
+  font-size: 25px;
+  font-weight: bold;
+}
+.back {
+  @include mxn.text;
+  display: none;
+}
+
+.mv:hover {
+  transform: rotateY(360deg);
+  transition: transform 0.9s ease-in-out;
+  & > .back {
+    display: block;
+  }
+  & > .front {
+    display: none;
+  }
+}
+.front {
+  gap: 63px;
+}
+.buttons {
+  @include mxn.flexcolumn;
+  justify-content: flex-end;
+  gap: 15px;
+}
+.testimonial1,
+.testimonial2,
+.testimonial3 {
+  display: none;
+  background: var(--whiteBG);
+  border-radius: 3px;
+  border: 3px solid black;
+}
+.showContainerVideo {
+  display: block;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+}
+.videoIcon {
+  @include mxn.buttonsDesign;
+  & > img {
+    max-width: 45px;
+  }
+}
+.containerButtons {
+  background: var(--whiteBG);
+  min-width: 100%;
+  @include mxn.flexrow;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 300px;
+  & > h2 {
+    font-size: 5rem;
+    font-family: "Signika Negative", sans-serif;
+    font-style: italic;
+    color: #834444;
+  }
+}
+.closeVideo {
+  top: 0;
+  position: absolute;
+  left: 100%;
+  @include mxn.buttonsDesign;
+  font-size: 30px;
+  font-weight: bold;
+}
+.container_videos {
+  background: var(--whiteBG);
+}
+.videoAbout {
+  min-width: 440px;
+  max-height: 400px;
+}

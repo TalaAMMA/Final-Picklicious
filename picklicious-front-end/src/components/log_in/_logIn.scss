@@ -1,0 +1,399 @@
+@use "../../scss/mixins" as mxn;
+
+.account-body {
+  flex: 1 0;
+  overflow: auto;
+}
+#rootAccount {
+  flex: 1 0;
+  overflow: auto;
+  background: rgb(19, 85, 32);
+  background: radial-gradient(
+    circle,
+    rgb(19, 85, 32) 0%,
+    rgb(245, 251, 246) 0%,
+    rgb(222, 226, 222) 100%
+  );
+  flex: 1 0;
+  overflow: auto;
+  border: 15px solid #617d65;
+  border-radius: 10px;
+}
+.formSign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.form-sign {
+  display: flex;
+  gap: 30px;
+  & > input {
+    background: white;
+    padding: 12px;
+    border-radius: 20px;
+  }
+}
+.titleSign {
+  @include mxn.fontSign;
+}
+.containerSign {
+  gap: 65px;
+  min-height: 100%;
+  padding: 130px;
+  & > p {
+    align-items: center;
+    color: var(--orange);
+    font-weight: bold;
+  }
+}
+
+.ask {
+  @include mxn.buttonsDesign;
+  text-decoration-line: underline;
+}
+.logoAcc {
+  padding: 80px;
+
+  border-radius: 20px;
+  & > span > a > img {
+    min-width: 155px;
+    display: flex;
+  }
+}
+.UpOrIn {
+  gap: 20px;
+}
+.buttonSign {
+  background: white;
+  @include mxn.buttonsDesign;
+  color: var(--orange);
+  padding: 5px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.switchBtn {
+  @include mxn.buttonsDesign;
+  text-decoration: underline;
+}
+
+.Account {
+  flex: 1 0;
+}
+.loggedIn {
+  display: flex;
+  align-items: flex-end;
+}
+
+.welcome {
+  color: #cf4a43;
+  font-size: large;
+
+  font-style: italic;
+  font-weight: bold;
+  align-items: center;
+}
+
+@keyframes myAnim {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 1;
+    transform: translateY(-45px);
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  40% {
+    animation-timing-function: ease-in;
+    transform: translateY(-24px);
+  }
+
+  65% {
+    animation-timing-function: ease-in;
+    transform: translateY(-12px);
+  }
+
+  82% {
+    animation-timing-function: ease-in;
+    transform: translateY(-6px);
+  }
+
+  93% {
+    animation-timing-function: ease-in;
+    transform: translateY(-4px);
+  }
+
+  25%,
+  55%,
+  75%,
+  87% {
+    animation-timing-function: ease-out;
+    transform: translateY(0px);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.logOutBtn {
+  @include mxn.buttonsDesign;
+  text-decoration: underline;
+}
+
+.logo > img {
+  max-width: 65px;
+}
+.accountHeader {
+  flex-direction: column;
+  padding: 20px;
+  display: flex;
+}
+.titlesAccount {
+  align-items: center;
+  padding: 20px;
+  gap: 30px;
+  & > a {
+    transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    @include mxn.textAccount;
+    text-decoration: none;
+    &:hover {
+      box-shadow: inset 305px 0 0 0 rgba(19, 85, 32, 1);
+      color: white;
+    }
+  }
+  & > video {
+    min-width: 400px;
+    max-height: 300px;
+  }
+  @media (min-width: 321px) and (max-width: 768px) {
+    gap: 15px;
+  }
+  @media (max-width: 320px) {
+    gap: 15px;
+  }
+}
+.letter-image {
+  width: 200px;
+  height: 200px;
+
+  cursor: pointer;
+  @media (min-width: 321px) and (max-width: 768px) {
+    display: block;
+  }
+  @media (max-width: 320px) {
+    display: block;
+  }
+}
+
+.animated-mail {
+  position: absolute;
+  height: 150px;
+  width: 200px;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  transition: 0.4s;
+
+  .body {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 100px 200px;
+    border-color: transparent transparent #e95f55 transparent;
+    z-index: 2;
+  }
+
+  .top-fold {
+    position: absolute;
+    top: 50px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 50px 100px 0 100px;
+    -webkit-transform-origin: 50% 0%;
+    -webkit-transition: transform 0.4s 0.4s, z-index 0.2s 0.4s;
+    -moz-transform-origin: 50% 0%;
+    -moz-transition: transform 0.4s 0.4s, z-index 0.2s 0.4s;
+    transform-origin: 50% 0%;
+    transition: transform 0.4s 0.4s, z-index 0.2s 0.4s;
+    border-color: #cf4a43 transparent transparent transparent;
+    z-index: 2;
+  }
+
+  .back-fold {
+    position: absolute;
+    bottom: 0;
+    width: 200px;
+    height: 100px;
+    background: #cf4a43;
+    z-index: 0;
+  }
+
+  .left-fold {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 50px 0 50px 100px;
+    border-color: transparent transparent transparent #e15349;
+    z-index: 2;
+  }
+
+  .letter {
+    left: 20px;
+    bottom: 0px;
+    position: absolute;
+    width: 160px;
+    height: 60px;
+    background: white;
+    z-index: 1;
+    overflow: hidden;
+    -webkit-transition: 0.4s 0.2s;
+    -moz-transition: 0.4s 0.2s;
+    transition: 0.4s 0.2s;
+
+    .letter-border {
+      height: 10px;
+      width: 100%;
+      background: repeating-linear-gradient(
+        -45deg,
+        #cb5a5e,
+        #cb5a5e 8px,
+        transparent 8px,
+        transparent 18px
+      );
+    }
+
+    .letter-title {
+      margin-top: 10px;
+      margin-left: 5px;
+      height: 10px;
+      width: 40%;
+      background: #cb5a5e;
+    }
+    .letter-context {
+      margin-top: 10px;
+      margin-left: 5px;
+      height: 10px;
+      width: 20%;
+      background: #cb5a5e;
+    }
+
+    .letter-stamp {
+      margin-top: 30px;
+      margin-left: 120px;
+      border-radius: 100%;
+      height: 30px;
+      width: 30px;
+      background: #cb5a5e;
+      opacity: 0.3;
+    }
+  }
+}
+
+.letter-image:hover {
+  .animated-mail {
+    transform: translateY(50px);
+    -webkit-transform: translateY(50px);
+    -moz-transform: translateY(50px);
+  }
+
+  .animated-mail .top-fold {
+    transition: transform 0.4s, z-index 0.2s;
+    transform: rotateX(180deg);
+    -webkit-transition: transform 0.4s, z-index 0.2s;
+    -webkit-transform: rotateX(180deg);
+    -moz-transition: transform 0.4s, z-index 0.2s;
+    -moz-transform: rotateX(180deg);
+    z-index: 0;
+  }
+
+  .animated-mail .letter {
+    height: 180px;
+  }
+
+  .shadow {
+    width: 250px;
+  }
+}
+.popUpAccount {
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 410px;
+  position: absolute;
+  background: whitesmoke;
+
+  z-index: 3;
+
+  & > p {
+    color: rgba(126, 143, 123, 0.85);
+    font-style: italic;
+    z-index: 1;
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 19px 12px rgba(25, 79, 16, 0.85);
+    box-shadow: 0px 0px 19px 12px rgba(126, 143, 123, 0.85);
+    display: flex;
+
+    animation: popUp 2s cubic-bezier(0.11, 0, 0.5, 0) 0s 1 normal forwards;
+  }
+  & > button {
+    @include mxn.buttonsDesign;
+  }
+  @media (min-width: 321px) and (max-width: 768px) {
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 80%;
+    position: absolute;
+    background: whitesmoke;
+    z-index: 3;
+  }
+  @media (max-width: 320px) {
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 80%;
+
+    position: absolute;
+    background: whitesmoke;
+    z-index: 3;
+  }
+}
+
+.hideEnvelope {
+  display: none;
+}
+.closePopUpAccount {
+  max-width: 35px;
+  min-height: 20px;
+  left: 100%;
+  position: absolute;
+  & > img {
+    max-width: 20px;
+    min-height: 20px;
+  }
+}
+
+.containerPassword {
+  @include mxn.flexrow;
+  & > input {
+    background: white;
+    padding: 12px;
+    border-radius: 20px;
+  }
+}
+.eye {
+  min-width: 25px;
+  min-height: 25px;
+  cursor: pointer;
+  position: absolute;
+}

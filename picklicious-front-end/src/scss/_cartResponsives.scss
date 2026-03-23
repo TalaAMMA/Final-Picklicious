@@ -1,0 +1,55 @@
+@use "./mixins" as mxn;
+
+@media (min-width: 321px) and (max-width: 768px) {
+    .containerCart
+    {& > p {
+      font-size: 1.5rem;
+    }}
+  }
+  @media (max-width: 320px) {
+    .containerCart
+    {& > p {
+      font-size: 1.5rem;
+    }}
+  }
+  @media (min-width: 321px) and (max-width: 768px) {
+    .addBtn
+{    max-height: 10px;
+  max-width: 10px;}
+  }
+  @media (max-width: 320px) {
+    .addBtn
+ {   max-height: 10px;
+  max-width: 10px;}
+  }
+  @media (min-width: 321px) and (max-width: 768px) {
+    .removeBtn 
+   { max-height: 10px;
+    max-width: 10px;}
+  }
+  @media (max-width: 320px) {
+    .removeBtn 
+    {max-height: 10px;
+      max-width: 10px;}
+  }
+  @media (min-width: 321px) and (max-width: 768px) {
+    .updateQty
+{    gap: 0;}
+  }
+  @media (max-width: 320px) {
+    .updateQty
+   { gap: 0;
+    @include mxn.flexcolumn;}
+  }
+  @media (min-width: 321px) and (max-width: 768px) {
+    .productDetails
+  {  & > p {
+    font-size: 1.5rem;
+  }}
+  }
+  @media (max-width: 320px) {
+    .productDetails
+    {& > p {
+      font-size: 1.5rem;
+    }}
+  }

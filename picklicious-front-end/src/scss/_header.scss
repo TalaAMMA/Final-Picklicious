@@ -1,0 +1,172 @@
+@use "./mixins" as mxn;
+
+
+
+.first-header {
+  justify-content: flex-end;
+  width: 1000px;
+  @include mxn.flexrow;
+  padding: 10px;
+  align-items: center;
+
+}
+
+.first-header button {
+  outline: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+.second-header {
+  max-width: 1200px;
+  @include mxn.flexrow;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.adaptive-img-cover {
+  min-height: 100px;
+  min-width: 100px;
+}
+header {
+  align-items: center;
+  position: relative;
+  border-bottom: 3px solid rgb(136 136 136);
+}
+
+.third-header > ul {
+  display: flex;
+
+  gap: 60px;
+
+  & > li {
+    cursor: pointer;
+  }
+}
+.container-search {
+  max-height: 35px;
+  min-width: 200px;
+
+}
+.menu-bar {
+  background: var(--green);
+  padding: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.third-header a:link {
+  color: var(--black);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.third-header a:visited {
+  color: var(--black);
+  text-decoration: line-through;
+  font-weight: bold;
+}
+
+.third-header a:hover {
+  color: var(--greenyellow);
+}
+
+ 
+.account {
+  @include mxn.flexrow;
+
+  > button {
+    @include mxn.buttonsDesign;
+  }
+}
+.basket {
+  min-width: 30px;
+  min-height: 30px;
+  & > span > img {
+    max-width: 30px;
+  }
+
+}
+.productBasket {
+  min-width: 30px;
+  min-height: 30px;
+  & > span > img {
+    max-width: 30px;
+  }
+
+}
+.hidden {
+  display: none;
+}
+.hamburgerIcon {
+  display: none;
+  @include mxn.buttonsDesign;
+  padding-right: 30px;
+}
+.closeIcon,.closeMap {
+  max-width: 25px;
+  @include mxn.buttonsDesign;
+  & > img {
+    max-height: 15px;
+    max-width: 15px;
+  }
+}
+
+.hiddenList {
+  display: flex;
+  gap: 10px;
+
+  & a:link {
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  & a:visited {
+    color: var(--black);
+    text-decoration: line-through;
+  }
+
+  & a:hover {
+    color: var(--greenyellow);
+  }
+
+}
+.containerHamburger {
+  display: none;
+
+}
+.sign {
+  display: flex;
+  flex-direction: row;
+  right: 0;
+  position: absolute;
+  padding: 15px;
+
+  & > button {
+    @include mxn.buttonsDesign;
+    & > a {
+      text-decoration: none;
+    }
+
+    & > a:link {
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    & > a:visited {
+      color: var(--black);
+      text-decoration: line-through;
+    }
+
+    & > a:hover {
+      color: var(--greenyellow);
+    }
+  }
+  @media (min-width: 321px) and (max-width: 768px) {
+    display: none;
+  }
+  @media (max-width: 320px) {
+    display: none;
+  }
+}
+

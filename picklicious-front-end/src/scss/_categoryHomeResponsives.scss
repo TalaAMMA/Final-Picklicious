@@ -1,0 +1,67 @@
+@use "./mixins" as mxn;
+
+@media (min-width: 321px) and (max-width: 768px) {
+    .categories
+   { max-width: 570px;}
+  }
+  @media (max-width: 320px) {
+    .categories
+   { max-width: 300px;}
+  }
+  @media (min-width: 321px) and (max-width: 768px) {
+    .products > img
+{    opacity: 0.5;
+  min-width: 20%;
+  min-height: 100%;
+  @include mxn.flexcolumn;}
+  }
+  @media (max-width: 320px) {
+    .products > img
+ {   display: none;}
+  }
+  @media (min-width: 321px) and (max-width: 768px) {
+    .row
+    {display: none;}
+  }
+
+  @media (max-width: 320px) {
+    .row
+   { display: none;}
+  }
+  @media (min-width: 321px) and (max-width: 768px) {
+    .hover-paragraph
+  {  display: none;}
+  }
+  @media (max-width: 320px) {
+    .hover-paragraph
+    {display: none;}
+  }
+  @media (min-width: 321px) and (max-width: 768px) {
+    .goButton
+   { display: block;
+    font-size: 14px;
+    color: azure;}
+  }
+  @media (max-width: 320px) {
+    .goButton
+  {  display: block;
+    font-size: 14px;
+    color: azure;}
+  }
+  @media (min-width: 321px) and (max-width: 768px) {
+    .smallContainerAbout
+{    display: flex;
+  max-width: 320px;
+
+  gap: 10px;
+  padding: 10px;
+  max-width: 100%;}
+  }
+  @media (max-width: 320px) {
+    .smallContainerAbout
+    {max-width: 250px;
+
+      gap: 10px;
+      padding: 10px;
+      display: flex;}
+  }

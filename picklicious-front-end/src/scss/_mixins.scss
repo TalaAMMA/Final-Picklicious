@@ -1,0 +1,42 @@
+@mixin flexcolumn {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flexrow {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin buttonsDesign {
+  user-select: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+@mixin sliderArrows {
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  content: "";
+  cursor: pointer;
+}
+@mixin fontSign {
+  color: #bc1888;
+  font-size: 30px;
+  font-weight: bold;
+}
+@mixin text {
+  font-size: 17px;
+  letter-spacing: 1px;
+  text-align: justify;
+  font-family: "Signika Negative", sans-serif;
+}
+@mixin textAccount {
+ font-size: larger;
+ color:var(--gray) ;
+  font-style: italic;
+  font-weight: bold;
+}
