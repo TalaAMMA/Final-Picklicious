@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start:all": "npm-run-all --parallel start-back start-front",
+    "start:all": "npm run start-back & npm run start-front",
     "start-back": "cd picklicious-back && npm run dev",
     "start-front": "cd picklicious-front-end && npm run dev"
   },

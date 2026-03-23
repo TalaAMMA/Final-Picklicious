@@ -4,9 +4,10 @@
   "description": "",
   "main": "constants.js",
 "scripts": {
+  "start": "npx serve prod -l 3000",
     "test": "echo \"Error: no test specified\" && exit 1",
     "mkdirs": "mkdir -p prod/css && mkdir -p prod/pages && mkdir -p prod/images && mkdir -p prod/js",
-    "copyPages": "cp -r src/pages/* prod/pages && cp src/pages/index.html prod/index.html",
+    "copyPages": "cp -r src/pages/* prod/",
     "copyImages": "cp -r src/images/* prod/images",
     "copyJS": "cp -r src/js/* prod/js",
     "sass:dev": "npx sass --watch src/index.scss src/css/style.css",
