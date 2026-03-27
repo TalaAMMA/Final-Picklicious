@@ -41441,12 +41441,12 @@
     const closePopUp = () => {
       setpopUp(false);
     };
-    const logout2 = () => {
+    const logout = () => {
       setIsLogged(false);
       window.localStorage.clear();
     };
     const [popUp, setpopUp] = (0, import_react.useState)(false);
-    return /* @__PURE__ */ import_react.default.createElement("div", { className: "Account" }, /* @__PURE__ */ import_react.default.createElement("div", { className: "accountHeader" }, /* @__PURE__ */ import_react.default.createElement("div", { className: "loggedIn" }, /* @__PURE__ */ import_react.default.createElement("a", { href: "index.html", className: "logo" }, /* @__PURE__ */ import_react.default.createElement("img", { src: "../images/logo.jpg", alt: "Logo for Pickilicious" })), /* @__PURE__ */ import_react.default.createElement("button", { type: "button", className: "logOutBtn", onClick: logout2 }, "sign-out")), /* @__PURE__ */ import_react.default.createElement("p", { className: "welcome" }, "`Welcome ! Successfully Logged In`"), popUp && /* @__PURE__ */ import_react.default.createElement("div", { className: "popUpAccount" }, /* @__PURE__ */ import_react.default.createElement("button", { type: "button", onClick: closePopUp }, " ", /* @__PURE__ */ import_react.default.createElement("img", { src: "../images/cross.png", alt: "cross", className: "closePopUpAccount" })), /* @__PURE__ */ import_react.default.createElement("p", null, "A thank you message from us to you! On behalf of the Picklicious family, we wanted to say thank you. We\u2019re so lucky to have customers like you! Thank you for your support! Thank you for your confidence in us, we value your trust and sincerely appreciate you! Much love, the Picklicious family !"))), /* @__PURE__ */ import_react.default.createElement("div", { className: "mainAccount" }, /* @__PURE__ */ import_react.default.createElement("div", { className: "titlesAccount" }, /* @__PURE__ */ import_react.default.createElement("a", { href: "About.html" }, "Our Story"), /* @__PURE__ */ import_react.default.createElement("a", { href: "products.html" }, " Take a look at our Products"), /* @__PURE__ */ import_react.default.createElement("a", { href: "About.html#sectionVideos" }, "News Coverage"), /* @__PURE__ */ import_react.default.createElement("a", { href: "mailto:picklicious.food@gmail.com" }, "Contact Us"), /* @__PURE__ */ import_react.default.createElement(
+    return /* @__PURE__ */ import_react.default.createElement("div", { className: "Account" }, /* @__PURE__ */ import_react.default.createElement("div", { className: "accountHeader" }, /* @__PURE__ */ import_react.default.createElement("div", { className: "loggedIn" }, /* @__PURE__ */ import_react.default.createElement("a", { href: "index.html", className: "logo" }, /* @__PURE__ */ import_react.default.createElement("img", { src: "../images/logo.jpg", alt: "Logo for Pickilicious" })), /* @__PURE__ */ import_react.default.createElement("button", { type: "button", className: "logOutBtn", onClick: logout }, "sign-out")), /* @__PURE__ */ import_react.default.createElement("p", { className: "welcome" }, "`Welcome ! Successfully Logged In`"), popUp && /* @__PURE__ */ import_react.default.createElement("div", { className: "popUpAccount" }, /* @__PURE__ */ import_react.default.createElement("button", { type: "button", onClick: closePopUp }, " ", /* @__PURE__ */ import_react.default.createElement("img", { src: "../images/cross.png", alt: "cross", className: "closePopUpAccount" })), /* @__PURE__ */ import_react.default.createElement("p", null, "A thank you message from us to you! On behalf of the Picklicious family, we wanted to say thank you. We\u2019re so lucky to have customers like you! Thank you for your support! Thank you for your confidence in us, we value your trust and sincerely appreciate you! Much love, the Picklicious family !"))), /* @__PURE__ */ import_react.default.createElement("div", { className: "mainAccount" }, /* @__PURE__ */ import_react.default.createElement("div", { className: "titlesAccount" }, /* @__PURE__ */ import_react.default.createElement("a", { href: "About.html" }, "Our Story"), /* @__PURE__ */ import_react.default.createElement("a", { href: "products.html" }, " Take a look at our Products"), /* @__PURE__ */ import_react.default.createElement("a", { href: "About.html#sectionVideos" }, "News Coverage"), /* @__PURE__ */ import_react.default.createElement("a", { href: "mailto:picklicious.food@gmail.com" }, "Contact Us"), /* @__PURE__ */ import_react.default.createElement(
       "video",
       {
         src: "../videos/loginVideo.mp4",
@@ -41477,12 +41477,6 @@
     if (!data)
       return null;
     return JSON.parse(data);
-  };
-  var removeItem = (key) => {
-    const data = window.localStorage.removeItem(key);
-    if (!data)
-      return null;
-    return JSON.stringify(data);
   };
 
   // src/components/signIn/SignIn.jsx
@@ -41964,52 +41958,36 @@
   };
   var delete_api_default = deleteOne;
 
-  // src/api/items/read.api.js
-  var read = async () => {
-    const token = getItem("token");
-    const config = {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        Authorization: token
-      }
-    };
-    try {
-      const response = await fetch(`http://localhost:7001/items/readAll`, config);
-      const result = await response.json();
-      if (!result || !result.items) {
-        return null;
-      } else {
-        return result.items;
-      }
-    } catch (e) {
-      console.error("Problem with request : ", e.message);
-      return null;
-    }
-  };
-  var read_api_default = read;
-
   // src/js/totalcalcul.js
   var calculateTotal = () => {
     const cart = getItem("cart");
     let calc = 0;
     if (cart) {
       cart.forEach((item) => {
-        console.log(item);
-        calc = calc + parseFloat(item.price);
+        const price = parseFloat(String(item.price).replace("$", ""));
+        const quantity = item.quantity || 1;
+        if (!isNaN(price)) {
+          calc = calc + price * quantity;
+        }
       });
     }
+    console.log("Valeur calcul\xE9e dans le fichier JS :", calc);
+    return calc;
   };
   var totalcalcul_default = calculateTotal;
 
   // src/components/cart/Cart.jsx
   var Cart = () => {
-    const cart = getItem("cart");
+    const [total, setTotal] = (0, import_react10.useState)(0);
+    const [cartProducts, setCartProducts] = (0, import_react10.useState)([]);
+    const [showModal, setshowModal] = (0, import_react10.useState)(false);
+    const refreshCart = () => {
+      const currentCart = getItem("cart") || [];
+      setCartProducts(sort_util_default(currentCart));
+      setTotal(totalcalcul_default());
+    };
     const showCart = () => {
-      const cart2 = getItem("cart");
-      setCartProducts(cart2);
-      let calc = totalcalcul_default();
-      setTotal(calc);
+      refreshCart();
       setshowModal(true);
     };
     const closeCart = () => {
@@ -42018,92 +41996,45 @@
     const AddOne = async (product) => {
       const updatedProduct = {
         ...product,
-        image: product.image,
         quantity: parseFloat(product.quantity) + 1,
-        price: parseFloat(product.price) / product.quantity + parseFloat(product.price)
+        price: product.price
       };
       const updateCart = await update_api_default(updatedProduct);
       setItem("cart", updateCart);
-      showCart();
+      refreshCart();
     };
     const removeOne = async (product) => {
+      if (product.quantity <= 1)
+        return;
       const updatedProduct = {
         ...product,
-        quantity: parseFloat(product.quantity - 1),
-        price: parseFloat(product.price) - parseFloat(product.price) / product.quantity,
-        image: product.image
+        quantity: parseFloat(product.quantity) - 1,
+        price: product.price
       };
       const updateCart = await update_api_default(updatedProduct);
-      if (updatedProduct.price >= 1) {
-        setItem("cart", updateCart);
-      }
-      showCart();
+      setItem("cart", updateCart);
+      refreshCart();
     };
     const deleteProductFromCart = async (productId) => {
       const updatedCart = await delete_api_default(productId);
       setItem("cart", updatedCart);
-      showCart();
+      refreshCart();
     };
     const clear = () => {
-      const cart2 = getItem("cart");
-      if (!cart2)
-        return;
-      if (cart2) {
-        cart2.forEach(() => {
-          setTotal(0);
-        });
-      }
       localStorage.removeItem("cart");
       setCartProducts([]);
+      setTotal(0);
     };
-    const maxQuantity = () => {
-      const max = document.querySelector(".maxQuantity");
-      max.classList.remove(".hidden");
-    };
-    const [total, setTotal] = (0, import_react10.useState)(0);
-    const [cartProducts, setCartProducts] = (0, import_react10.useState)([]);
-    const [showModal, setshowModal] = (0, import_react10.useState)(false);
-    const [items, setitems] = (0, import_react10.useState)([]);
     (0, import_react10.useEffect)(() => {
-      const deletedProductId = getItem("deletedProductId");
-      if (deletedProductId) {
-        const updatedProducts = cartProducts.filter(
-          (product) => product.id !== deletedProductId
-        );
-        setCartProducts(updatedProducts);
-        removeItem("deletedProductId");
-      }
-    }, [cartProducts]);
-    (0, import_react10.useEffect)(() => {
-      const cart2 = getItem("cart");
-      if (cart2) {
-        delete_api_default(cart2.id);
-      }
+      refreshCart();
     }, []);
-    (0, import_react10.useEffect)(() => {
-      const getItems = async () => {
-        const items2 = await read_api_default(cart);
-        items2 ? setitems(items2) : logout();
-      };
-      getItems();
-    }, []);
-    (0, import_react10.useEffect)(() => {
-      let calc = totalcalcul_default();
-      setTotal(calc);
-    }, [showModal]);
-    (0, import_react10.useEffect)(() => {
-      const cart2 = getItem("cart");
-      if (cart2) {
-        setCartProducts(sort_util_default(cart2));
-      }
-    }, []);
-    return /* @__PURE__ */ import_react10.default.createElement(import_react10.default.Fragment, null, /* @__PURE__ */ import_react10.default.createElement("div", { className: "adaptive-img-cover  productBasket", onClick: showCart }, /* @__PURE__ */ import_react10.default.createElement("span", null, /* @__PURE__ */ import_react10.default.createElement("img", { src: "../images/basket.png", alt: "basket" }))), /* @__PURE__ */ import_react10.default.createElement(Modal_default, { visible: showModal }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "containerCart" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "buttonsCart" }, /* @__PURE__ */ import_react10.default.createElement(
+    return /* @__PURE__ */ import_react10.default.createElement(import_react10.default.Fragment, null, /* @__PURE__ */ import_react10.default.createElement("div", { className: "adaptive-img-cover productBasket", onClick: showCart }, /* @__PURE__ */ import_react10.default.createElement("span", null, /* @__PURE__ */ import_react10.default.createElement("img", { src: "../images/basket.png", alt: "basket" }))), /* @__PURE__ */ import_react10.default.createElement(Modal_default, { visible: showModal }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "containerCart" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "buttonsCart" }, /* @__PURE__ */ import_react10.default.createElement(
       "img",
       {
         onClick: clear,
         className: "closeBtn",
         src: "../images/emptyCart.png",
-        alt: "closeBtn"
+        alt: "empty"
       }
     ), /* @__PURE__ */ import_react10.default.createElement(
       "img",
@@ -42111,67 +42042,21 @@
         src: "../images/close.png",
         className: "closeBtn",
         onClick: closeCart,
-        alt: "closeBtn"
+        alt: "close"
       }
-    )), cartProducts && cartProducts.length > 0 ? /* @__PURE__ */ import_react10.default.createElement("ul", null, sort_util_default(cartProducts).map((product) => {
-      return /* @__PURE__ */ import_react10.default.createElement("li", { key: product.id, className: "productDetails" }, /* @__PURE__ */ import_react10.default.createElement(
-        "img",
-        {
-          className: "adaptive-img-cover productImg",
-          crossOrigin: "anonymous",
-          src: `http://localhost:7001/public/${product.image}`,
-          alt: "productImg"
-        }
-      ), /* @__PURE__ */ import_react10.default.createElement("p", null, product.name), /* @__PURE__ */ import_react10.default.createElement("p", { className: "updateQty" }, /* @__PURE__ */ import_react10.default.createElement(
-        "button",
-        {
-          className: "quantity",
-          onClick: () => removeOne(product)
-        },
-        /* @__PURE__ */ import_react10.default.createElement(
-          "img",
-          {
-            src: "../images/removeBtn.png",
-            className: "removeBtn",
-            alt: "removeBtn"
-          }
-        )
-      ), product.quantity, /* @__PURE__ */ import_react10.default.createElement(
-        "button",
-        {
-          className: "quantity",
-          onClick: () => {
-            if (product.quantity < 5) {
-              AddOne(product);
-            } else {
-              maxQuantity();
-            }
-          }
-        },
-        /* @__PURE__ */ import_react10.default.createElement(
-          "img",
-          {
-            src: "../images/addBtn.png",
-            className: "addBtn",
-            alt: "addBtn"
-          }
-        )
-      ), product.quantity === 5 && /* @__PURE__ */ import_react10.default.createElement("span", { className: "maxQuantity" }, "Max. qty reached")), /* @__PURE__ */ import_react10.default.createElement("p", null, `${parseFloat(product.price)}$`), /* @__PURE__ */ import_react10.default.createElement(
-        "button",
-        {
-          className: "quantity",
-          onClick: () => deleteProductFromCart(product.id)
-        },
-        /* @__PURE__ */ import_react10.default.createElement(
-          "img",
-          {
-            src: "../images/trashBin.png",
-            className: "removeBtn",
-            alt: "trashBin"
-          }
-        )
-      ));
-    })) : /* @__PURE__ */ import_react10.default.createElement("p", { className: "emptyCartMessage" }, "Your Cart is empty"), /* @__PURE__ */ import_react10.default.createElement("p", { className: "total" }, "Total : ", total, "$"), /* @__PURE__ */ import_react10.default.createElement("button", { className: "checkOut" }, "Go To Check-out"))));
+    )), cartProducts && cartProducts.length > 0 ? /* @__PURE__ */ import_react10.default.createElement("ul", null, cartProducts.map((product) => /* @__PURE__ */ import_react10.default.createElement("li", { key: product.id, className: "productDetails" }, /* @__PURE__ */ import_react10.default.createElement(
+      "img",
+      {
+        className: "adaptive-img-cover productImg",
+        crossOrigin: "anonymous",
+        src: `http://localhost:7001/public/${product.image}`,
+        alt: product.name
+      }
+    ), /* @__PURE__ */ import_react10.default.createElement("p", null, product.name), /* @__PURE__ */ import_react10.default.createElement("p", { className: "updateQty" }, /* @__PURE__ */ import_react10.default.createElement("button", { className: "quantity", onClick: () => removeOne(product) }, /* @__PURE__ */ import_react10.default.createElement("img", { src: "../images/removeBtn.png", className: "removeBtn", alt: "remove" })), product.quantity, /* @__PURE__ */ import_react10.default.createElement("button", { className: "quantity", onClick: () => AddOne(product) }, /* @__PURE__ */ import_react10.default.createElement("img", { src: "../images/addBtn.png", className: "addBtn", alt: "add" }))), /* @__PURE__ */ import_react10.default.createElement("p", null, parseFloat(String(product.price).replace("$", "")) * product.quantity, "$"), /* @__PURE__ */ import_react10.default.createElement("button", { className: "quantity", onClick: () => deleteProductFromCart(product.id) }, /* @__PURE__ */ import_react10.default.createElement("img", { src: "../images/trashBin.png", className: "removeBtn", alt: "delete" }))))) : /* @__PURE__ */ import_react10.default.createElement("p", { className: "emptyCartMessage" }, "Your Cart is empty"), /* @__PURE__ */ import_react10.default.createElement("p", { className: "total" }, "Total : ", (getItem("cart") || []).reduce((acc, item) => {
+      const p = parseFloat(String(item.price).replace("$", "")) || 0;
+      const q = item.quantity || 1;
+      return acc + p * q;
+    }, 0), " $"), /* @__PURE__ */ import_react10.default.createElement("button", { className: "checkOut" }, "Go To Check-out"))));
   };
   var Cart_default = Cart;
 
