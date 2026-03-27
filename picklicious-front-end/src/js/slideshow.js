@@ -1,10 +1,10 @@
 const images = [
-  "../images/AL_MAWSAM.png",
-  "../images/byroots.jpg",
-  "../images/convivio.png",
-  "../images/IrAP.png",
-  "../images/made_by_nature.png",
-  "../images/souk_el_balad.png"
+  "/images/AL_MAWSAM.png",
+  "/images/byroots.jpg",
+  "/images/convivio.png",
+  "/images/IrAP.png",
+  "/images/made_by_nature.png",
+  "/images/souk_el_balad.png"
 ];
 
 let i = 0;
